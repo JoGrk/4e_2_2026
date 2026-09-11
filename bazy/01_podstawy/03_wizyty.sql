@@ -49,3 +49,39 @@ CREATE TABLE wizyty(
     data DATE,
     typ INT
 );
+
+INSERT INTO typy
+(nazwa)
+VALUES 
+('lecznie'),
+('profilaktyka'),
+('kontrola');
+
+INSERT INTO klient
+(imie, nazwisko)
+VALUES 
+('Stanislaw', 'Nowak'),
+('Zbigniew', 'Kowalski');
+
+INSERT INTO wizyty
+(kto, data, typ)
+VALUES
+(2, '2026-09-10', 1),
+(2, '2026-09-10', 2), 
+(1, '2026-09-10', 3);
+
+DELETE FROM wizyty
+WHERE id=3;
+
+INSERT INTO wizyty
+(kto, data, typ )
+VALUES 
+(4,'2026-09-11',5);
+
+DELETE FROM wizyty
+WHERE id=4;
+
+ALTER TABLE wizyty
+ADD FOREIGN KEY(kto) REFERENCES klient(id)
+ALTER TABLE wizyty
+ADD FOREIGN KEY(typ) REFERENCES typy(id);
