@@ -57,9 +57,34 @@ UPDATE studenci
 SET telefon = '123 456 789'
 WHERE ID = 2;
 -- czy możesz usunąć ocenę?
-SELECT * FROM 
+DELETE from oceny
+WHERE id = 2;
+
+SELECT * FROM przedmioty;
+
 -- czy możesz usunąć przedmiot (czy będzie wiadomo, z jakiego przedmiotu jest ocena?)
+DELETE FROM przedmioty
+WHERE kod = 'lsk';
+
 -- czy możesz usunąć studenta (czy będzie wiadomo, kto ma daną ocenę?)
+
+DELETE from studenci
+WHERE id = 2;
 -- wyświetl dane ucznia oraz wszystkie jego oceny
+SELECT * FROM studenci;
+SELECT * FROM oceny;
+SELECT imie, nazwisko, telefon, ocena, przedmiot
+FROM studenci 
+    INNER JOIN oceny ON oceny.student=studenci.id;
 -- wyświetl przedmioty i oceny
+SELECT * from przedmioty;
+SELECT nazwa, ocena
+from przedmioty
+    INNER JOIN oceny on oceny.przedmiot = przedmioty.kod;
 -- wyświetl dane ucznia, przedmioty i oceny
+
+SELECT imie, nazwisko, nazwa, ocena
+FROM studenci
+    INNER JOIN oceny ON oceny.student=studenci.id
+    INNER JOIN przedmioty ON oceny.przedmiot=przedmioty.kod;
+
