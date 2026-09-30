@@ -88,3 +88,4 @@ FROM studenci
     INNER JOIN oceny ON oceny.student=studenci.id
     INNER JOIN przedmioty ON oceny.przedmiot=przedmioty.kod;
 
+
