@@ -29,3 +29,7 @@ SELECT skladnik_dodatkowy, nazwa
 FROM proste_drinki
 WHERE ilosc2 BETWEEN 30 AND 180;
 -- G. Wyświetl nazwy napojów, w których składnikiem głównym lub dodatkowym jest herbata.
+
+SELECT nazwa
+FROM proste_drinki
+WHERE skladnik_glowny LIKE '%herbata%' OR skladnik_dodatkowy LIKE '%herbata%';
