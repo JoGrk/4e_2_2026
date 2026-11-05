@@ -36,21 +36,55 @@ WHERE orderdate LIKE '%-07-%';
 
 
 -- 9. wyświetl dane o zamówieniach dokonanych w pierwszych 10 dniach lipca 1996
+SELECT *
+FROM orders
+WHERE orderdate BETWEEN '1996-07-01' AND '1996-07-10';
+
 
 -- 10 Wyświetl produkty uporządkowane według ceny rosnąco (najpierw najtańsze). 
-
+SELECT *
+FROM products
+ORDER BY price ASC;
 -- 11. Wyświetl pięć najdroższych produktów
-
+SELECT *
+FROM products
+ORDER BY price DESC
+LIMIT 5;
 -- 12. Wyświetl towary (nazwy i ceny) o cenach pomiędzy 10 a 100
+SELECT ProductName, Price
+FROM products
+WHERE Price BETWEEN 10 AND 100;
 
 -- 13. Jak wyżej, ale tylko towary dostawców o kodzie 2.
+SELECT ProductName, Price
+FROM products
+WHERE Price BETWEEN 10 AND 100 
+    && SupplierID LIKE '2';
 
 -- 14. Jak wyżej, ale obok dostawców o kodzie 2  wybierz także 8, 7,4 i 3
-
+SELECT ProductName, Price
+FROM products
+WHERE Price BETWEEN 10 AND 100 
+    AND SupplierID IN(2,8,7,4,3);
 -- 15. Wyświetl 10 najtańszych produktów posortowanych według nazwy
-
+SELECT *
+FROM products
+ORDER BY price, ProductName
+LIMIT 10;
 -- 16. Wyświetl produkty z kategorii 1,3,5,7, których cena jest mniejsza niż 10 lub większa od 50
+SELECT *
+FROM products
+WHERE 
+    categoryID IN(1,3,5,7) 
+    AND
+    price < 10 OR price > 50; 
 
 -- 17. Wyświetl nazwę produktu oraz cenę netto dla produktów z kategorii 5 lub 7
+SELECT ProductName, Price / 1.23 AS netto
+FROM products
+WHERE categoryID IN(5,7);
 
 -- 18. Wyświetl id klienta, numer zamówienia oraz miesiąc zamówienia dla zamówień z ostatniego kwartału. W zestawieniu powinny pojawić się dane z dowolnego roku.
+SELECT customerid, orderid, MONTH(orderdate) AS orderdate
+FROM orders
+WHERE MONTH(orderdate) IN (10,11,12);
