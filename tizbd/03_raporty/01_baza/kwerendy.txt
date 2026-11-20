@@ -1,0 +1,10 @@
+-- Wyświetl wszystkie nazwy dań (pole nazwa, tabela dania)
+
+SELECT nazwa 
+FROM dania;
+--  (pola imie, nazwisko z tabeli pracownicy)
+SELECT imie, nazwisko
+FROM pracownicy;
+--   (pola marka, model, kolor, stan z tabeli samochody)
+SELECT marka, model, kolor, stan
+FROM samochody;
